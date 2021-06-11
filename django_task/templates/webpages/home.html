@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<h1>Welcome {{user.username}}</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Email</th>
+        <th scope="col">User Name</th>        
+        <th scope="col">Address</th>
+        <th scope="col">Admin</th>
+        {% if user.is_admin %}
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+        {% else %}
+        <h3>You must have admin rights to access delete and edit feature. Logout and use super user credentials (or any other admin account) to login</h3>        
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for info in detail %}
+      <tr>
+        <th scope="row">{{info.id}}</th>
+        <td>{{info.email}}</td>
+        <td>{{info.username}}</td>
+        <td>{{info.address}}</td>
+        <td>{{info.is_admin}}</td>        
+        {% if user.is_admin %}
+        <td><a href="{% url 'delete_user' info.id %}" >Delete</a></td>
+        <td><a href="{% url 'edit_user' info.pk %}" >Edit</a></td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <h2>Login first to see user info</h2>
+{% endif %}
+
+{% endblock %}
