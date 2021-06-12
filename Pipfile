@@ -4,8 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-python-dotenv = "*"
+python-dotenv = "==0.17.1"
+requests = "*"
+asgiref = "==3.3.4"
+pytz = "==2021.1"
+sqlparse = "==0.4.1"
+Django = "==3.2.4"
 
 [dev-packages]
 

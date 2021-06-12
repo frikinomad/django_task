@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+import requests
 
 # Create your views here.
 def home(request):
     User = get_user_model()
     detail = User.objects.all()
+    # audio_feature_endpoint = requests.get('http://127.0.0.1:8000/api/v1')
+    # print(audio_feature_endpoint.json())
     data ={
         'detail': detail,
     }    
