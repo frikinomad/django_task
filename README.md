@@ -4,11 +4,13 @@ alternatively you can also you venv -> follow below commands
     virtualenv env/django_task
     source env/django_task/bin/activate
 
-NOTE: for this project purposes I will be using pipenv 
+NOTE: for this project purposes I will be using pipenv
 
 once you are in virtual env install the required files
-
-install Django -> pipenv install Django
-You can find all the required dependencies in requirements.txt file
+Use the requirements.txt file to install all the necessary files. run command -> pipenv install -r requirements.txt 
 
 Database -> I have used default django sqlite database for this app. Instead of using AWS database or heroku database
+
+The default user model has been changed to add email & address field by overrding AbstractBaseUser, PermissionsMixin, BaseUserManager
+
+In order to access the delete and edit functionality you need to login via an admin account.
